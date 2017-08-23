@@ -20,6 +20,8 @@ import (
 	"runtime"
 	"strings"
 
+	"derp/soong/android"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -144,14 +146,17 @@ type variableProperties struct {
 		}
 
 		Device_support_hwfde struct {
-			Cflags []string
-			Header_libs  []string
-			Shared_libs  []string
+			Cflags      []string
+			Header_libs []string
+			Shared_libs []string
 		}
 
 		Device_support_hwfde_perf struct {
 			Cflags []string
 		}
+
+		// include Derp variables
+		Derp android.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -212,10 +217,10 @@ type productVariables struct {
 
 	AppsDefaultVersionName *string `json:",omitempty"`
 
-	Real_hal                   *bool `json:",omitempty"`
-	Qmaa_hal                   *bool `json:",omitempty"`
-	Device_support_hwfde       *bool `json:",omitempty"`
-	Device_support_hwfde_perf  *bool `json:",omitempty"`
+	Real_hal                         *bool `json:",omitempty"`
+	Qmaa_hal                         *bool `json:",omitempty"`
+	Device_support_hwfde             *bool `json:",omitempty"`
+	Device_support_hwfde_perf        *bool `json:",omitempty"`
 	Allow_missing_dependencies       *bool `json:",omitempty"`
 	Unbundled_build                  *bool `json:",omitempty"`
 	Unbundled_build_sdks_from_source *bool `json:",omitempty"`
@@ -319,6 +324,9 @@ type productVariables struct {
 	ProductHiddenAPIStubsTest   []string `json:",omitempty"`
 
 	TargetFSConfigGen []string `json:",omitempty"`
+
+	// include Derp variables
+	Derp android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
