@@ -99,6 +99,7 @@ var Configuration = map[string]PathConfig{
 	"perl":    Log,
 	"printf":  Log,
 	"pstree":  Allowed,
+	"repo":    Allowed,
 	"rsync":   Allowed,
 	"sh":      Allowed,
 	"tr":      Allowed,
